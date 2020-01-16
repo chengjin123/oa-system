@@ -17,6 +17,12 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ *  文件上传
+ *  @author YE
+ *  @date 2020-01-16 15:21:24
+ *
+ */
 @RestController
 @RequestMapping(value = "/file")
 public class FileController {
