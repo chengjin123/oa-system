@@ -12,12 +12,6 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.List;
 
-/**
- * Description
- *
- * @author ZhengJiawei
- * @date 2019-03-21 10:47:40
- */
 @Service
 public class QjsqServiceImpl implements QjsqService {
 

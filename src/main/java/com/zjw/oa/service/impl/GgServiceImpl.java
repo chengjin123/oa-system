@@ -6,15 +6,10 @@ import com.zjw.oa.mapper.GgMapper;
 import com.zjw.oa.service.GgService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-/**
- * Description
- *
- * @author ZhengJiawei
- * @date 2019-03-21 10:47:40
- */
 @Service
 public class GgServiceImpl implements GgService {
 
@@ -29,6 +24,18 @@ public class GgServiceImpl implements GgService {
     @Override
     public List<Xmjd> getxmList() {
         return ggMapper.getxmList();
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public void add(Gsgg gsgg) {
+        ggMapper.add(gsgg);
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public void delete(Gsgg gsgg) {
+        ggMapper.delete(gsgg);
     }
 
 }
