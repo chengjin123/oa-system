@@ -5,11 +5,13 @@ import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
+import java.util.List;
 
 @Data
 public class Rw {
 
   private int rwId;
+  private List<Integer> ids;
   private String rwmc;
   private String rwms;
   @DateTimeFormat(pattern ="yyyy-MM-dd")

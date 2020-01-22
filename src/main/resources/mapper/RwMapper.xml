@@ -6,7 +6,7 @@
 
     <select id="myRw" resultType="com.zjw.oa.entity.Rw" parameterType="com.zjw.oa.entity.Rw">
         select r.rwId,r.rwmc,r.rwms,r.rwTime,r.jsUserId,r.fbUserId,r.jjcd,r.isComplete,
-        u.userName as jsUserName  from  mission r,user u where r.jsUserId=u.userId and jsUserId=#{jsUserId}
+        u.userName as jsUserName  from  mission r,user u where r.jsUserId=u.userId and jsUserId=#{jsUserId} and isComplete = 0
         <if test="rwmc!=null and rwmc!=''">
             and remc like concat('%',#{rwmc},'%')
         </if>
@@ -30,8 +30,8 @@
     </update>
 
     <insert id="addRw" parameterType="com.zjw.oa.entity.Rw">
-        insert into mission(rwmc, rwms, rwTime, jsUserId, fbUserId, jsUserName, fbUserName)
-        values(#{rwmc},#{rwms},#{rwTime},#{jsUserId},#{fbUserId},#{jsUserName},#{fbUserName})
+        insert into mission(rwmc, rwms, rwTime, jsUserId, fbUserId, jsUserName, fbUserName,jjcd,isComplete)
+        values(#{rwmc},#{rwms},#{rwTime},#{jsUserId},#{fbUserId},#{jsUserName},#{fbUserName},#{jjcd},#{isComplete})
     </insert>
 
     <select id="getHytz" parameterType="com.zjw.oa.entity.Hytz" resultType="com.zjw.oa.entity.Hytz">
@@ -49,5 +49,16 @@
     <insert id="addRz" parameterType="com.zjw.oa.entity.Rz">
         insert into rz(rdnr, rzTime, userId) values(#{rdnr},#{rzTime},#{userId})
     </insert>
+
+    <update id="batchremove" parameterType="com.zjw.oa.entity.Rw" >
+            update mission
+            <set >
+              isComplete = #{isComplete},
+            </set>
+            where rwId in
+        <foreach collection="ids" item="item" index="index" separator="," open="(" close=")" >
+          #{item}
+        </foreach>
+    </update>
 
 </mapper>

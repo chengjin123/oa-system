@@ -26,7 +26,7 @@ public class RwServiceImpl implements RwService {
     public List<Rw> myRw(Rw rw) {
 
         List<Rw> list = rwMapper.myRw(rw);
-        list.forEach(e->{
+        list.forEach(e -> {
             User u = new User();
             u.setUserId(e.getFbUserId());
             e.setFbUserName(userMapper.getUser(u).getUserName());
@@ -63,5 +63,10 @@ public class RwServiceImpl implements RwService {
     @Override
     public void addRz(Rz rz) throws Exception {
         rwMapper.addRz(rz);
+    }
+
+    @Override
+    public void batchremove(Rw rw) {
+        rwMapper.batchremove(rw);
     }
 }

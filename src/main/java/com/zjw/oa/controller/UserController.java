@@ -20,12 +20,6 @@ import javax.annotation.Resource;
 import java.io.IOException;
 import java.util.List;
 
-/**
- * Description
- *
- * @author ZhengJiawei
- * @date 2019-03-21 10:49:24
- */
 @RestController
 @EnableAutoConfiguration
 @RequestMapping(value = "/user")
@@ -64,8 +58,6 @@ public class UserController {
     /**
      * Description 获取用户列表
      *
-     * @author ZhengJiawei
-     * @date 2019-03-22 10:50:47
      */
     @RequestMapping(value = "/userList")
     @ResponseBody

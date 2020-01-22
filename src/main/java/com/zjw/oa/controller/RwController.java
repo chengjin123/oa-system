@@ -7,6 +7,7 @@ import com.zjw.oa.entity.Rw;
 import com.zjw.oa.entity.Rz;
 import com.zjw.oa.service.RwService;
 import com.zjw.oa.util.JsonUtil;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,6 +20,7 @@ import java.util.List;
 @RestController
 @EnableAutoConfiguration
 @RequestMapping(value = "/rwxx")
+@Slf4j
 public class RwController {
 
     @Resource
@@ -27,6 +29,7 @@ public class RwController {
 
     /**
      * 查看自己的工作任务 - 列表
+     *
      * @param rw
      * @return
      */
@@ -41,6 +44,7 @@ public class RwController {
 
     /**
      * 查看自己的工作任务 - 详情
+     *
      * @param rw
      * @return
      */
@@ -55,6 +59,7 @@ public class RwController {
 
     /**
      * 删除任务 - 权限
+     *
      * @param rw
      * @return
      */
@@ -62,9 +67,10 @@ public class RwController {
     @ResponseBody
     @CrossOrigin
     public JSONObject delRw(Rw rw) {
-        try{
+        try {
             rwService.delRw(rw);
-        }catch (Exception e){
+        } catch (Exception e) {
+            log.info("删除任务失败：" + e);
             return JSON.parseObject("{success:false,msg:\"删除任务失败！\"}");
         }
         return JSON.parseObject("{success:true,msg:\"删除任务成功！\"}");
@@ -72,6 +78,7 @@ public class RwController {
 
     /**
      * 修改任务 - 权限
+     *
      * @param rw
      * @return
      */
@@ -79,9 +86,9 @@ public class RwController {
     @ResponseBody
     @CrossOrigin
     public JSONObject updateRw(Rw rw) {
-        try{
+        try {
             rwService.updateRw(rw);
-        }catch (Exception e){
+        } catch (Exception e) {
             return JSON.parseObject("{success:false,msg:\"编辑任务失败！\"}");
         }
         return JSON.parseObject("{success:true,msg:\"编辑任务成功！\"}");
@@ -89,6 +96,7 @@ public class RwController {
 
     /**
      * 添加任务 - 权限
+     *
      * @param rw
      * @return
      */
@@ -96,9 +104,11 @@ public class RwController {
     @ResponseBody
     @CrossOrigin
     public JSONObject addRw(Rw rw) {
-        try{
+        try {
+            rw.setIsComplete(0);
             rwService.addRw(rw);
-        }catch (Exception e){
+        } catch (Exception e) {
+            log.info("添加任务失败：" + e);
             return JSON.parseObject("{success:false,msg:\"添加任务失败！\"}");
         }
         return JSON.parseObject("{success:true,msg:\"添加任务成功！\"}");
@@ -106,6 +116,7 @@ public class RwController {
 
     /**
      * 查看日志 - 列表
+     *
      * @return
      */
     @RequestMapping(value = "/rzList")
@@ -120,6 +131,7 @@ public class RwController {
 
     /**
      * 添加日志
+     *
      * @param rz
      * @return
      */
@@ -127,15 +139,31 @@ public class RwController {
     @ResponseBody
     @CrossOrigin
     public JSONObject addRz(Rz rz) {
-        try{
+        try {
             rwService.addRz(rz);
-        }catch (Exception e){
+        } catch (Exception e) {
             return JSON.parseObject("{success:false,msg:\"添加日志失败！\"}");
         }
         return JSON.parseObject("{success:true,msg:\"添加日志成功！\"}");
     }
 
-    public static void  main(String[] args) throws ParseException {
+
+    @RequestMapping(value = "/batchremove")
+    @ResponseBody
+    @CrossOrigin
+    public JSONObject batchremove(Rw rw) {
+        try {
+            rw.setIsComplete(1);
+            rwService.batchremove(rw);
+        } catch (Exception e) {
+            log.info("删除任务失败:" + e);
+            return JSON.parseObject("{success:false,msg:\"删除任务失败！\"}");
+        }
+        return JSON.parseObject("{success:true,msg:\"删除任务成功！\"}");
+    }
+
+
+    public static void main(String[] args) throws ParseException {
         String string = "2016-10-24 21:59:06";
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date date = sdf.parse(string);

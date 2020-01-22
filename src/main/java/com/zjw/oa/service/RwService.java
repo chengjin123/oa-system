@@ -14,4 +14,5 @@ public interface RwService {
     void addRw(Rw rw)throws Exception;
     List<Rz> rzList(String rz);
     void addRz(Rz rz)throws Exception;
+    void batchremove(Rw rw);
 }

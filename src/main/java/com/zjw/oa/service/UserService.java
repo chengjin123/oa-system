@@ -7,12 +7,6 @@ import com.zjw.oa.entity.User;
 
 import java.util.List;
 
-/**
- * Description 用户service层
- *
- * @author ZhengJiawei
- * @date 2019-03-21 10:47:26
- */
 public interface UserService {
 
     User login(User user);
