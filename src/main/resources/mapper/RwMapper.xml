@@ -39,7 +39,7 @@
     </select>
 
     <select id="rzList" resultType="com.zjw.oa.entity.Rz"  parameterType="java.lang.String">
-        select r.*,u.* from rz r,user u where r.userId=u.userId
+        select r.*,u.* from log_info r,user u where r.userId=u.userId
         <if test="rzTime!=null and rzTime!=''">
             and DATE_FORMAT(r.rzTime,'%Y-%m-%d')=#{rzTime}
         </if>
@@ -47,7 +47,7 @@
     </select>
 
     <insert id="addRz" parameterType="com.zjw.oa.entity.Rz">
-        insert into rz(rdnr, rzTime, userId) values(#{rdnr},#{rzTime},#{userId})
+        insert into log_info(rdnr, rzTime, userId) values(#{rdnr},#{rzTime},#{userId})
     </insert>
 
     <update id="batchremove" parameterType="com.zjw.oa.entity.Rw" >
