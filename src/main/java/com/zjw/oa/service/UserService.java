@@ -17,7 +17,7 @@ public interface UserService {
 
     List<UserDto> getDkList(UserDto userDto);
 
-    List<Hys> hysList();
+    List<Hys> hysList(Hys hys);
 
     void updateHys(Hys hys)throws Exception;
     User getUser(User user);

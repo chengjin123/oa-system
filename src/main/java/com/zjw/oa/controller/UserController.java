@@ -87,8 +87,8 @@ public class UserController {
 
     @RequestMapping(value = "/getHysList")
     @ResponseBody
-    public JSONArray getHysList() {
-        List<Hys> list = userService.hysList();
+    public JSONArray getHysList(Hys hys) {
+        List<Hys> list = userService.hysList(hys);
         String jsonStr = JsonUtil.serializeDate(list);
         return JSON.parseArray(jsonStr);
     }
@@ -97,6 +97,9 @@ public class UserController {
     @ResponseBody
     public JSONObject updateHys(Hys hys) {
         try{
+            if(!"空闲".equals(hys.getHyszt())){
+                hys.setStatus("审核中");
+            }
             userService.updateHys(hys);
         }catch (Exception e){
             System.out.println(e);

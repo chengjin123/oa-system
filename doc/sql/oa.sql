@@ -29,7 +29,7 @@ CREATE TABLE `dk`  (
 -- ----------------------------
 -- Table structure for gsgg
 -- ----------------------------
-DROP TABLE IF EXISTS `gsgg`;
+DROP TABLE IF EXISTS `notice`;
 CREATE TABLE `notice`  (
   `ggId` int(5) NOT NULL,
   `ggTitle` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '公告标题',
@@ -42,8 +42,8 @@ CREATE TABLE `notice`  (
 -- ----------------------------
 -- Records of gsgg
 -- ----------------------------
-INSERT INTO `gsgg` VALUES (1, '五一长假', '公司各部门：     “年会”，是公司一年一度不可缺少的“家庭盛会”。年末岁初，通过年会这种形式来组织各种活动，激扬士气、部署战略、制定目标，奏响新一年度工作的序曲。\r\n    年会总结回顾20XX年度各项工作，对20XX年工作做出安排和部署，表彰年度各项先进，增进公司内部员工的交流和沟通，促', '2019-05-15 14:59:35', 1);
-INSERT INTO `gsgg` VALUES (2, '公告2', '促进公司的企业文化建设，同时计划20XX年年会邀请供应商参加，分享公司一年来的业绩成果，以快乐开心的气氛，加强与供应商的合作和沟通。\r\n   0XX年年会主题：激情、创新、融合、跨越     为更好的组织20XX年公司年会，通知如下：     1、公司组织文艺节目演出，要求以部门为单位上报演出节目。每个部门都必须有节目。人员比较少的部门可以组合。', '2019-05-16 14:59:56', 1);
+INSERT INTO `notice` VALUES (1, '五一长假', '公司各部门：     “年会”，是公司一年一度不可缺少的“家庭盛会”。年末岁初，通过年会这种形式来组织各种活动，激扬士气、部署战略、制定目标，奏响新一年度工作的序曲。\r\n    年会总结回顾20XX年度各项工作，对20XX年工作做出安排和部署，表彰年度各项先进，增进公司内部员工的交流和沟通，促', '2019-05-15 14:59:35', 1);
+INSERT INTO `notice` VALUES (2, '公告2', '促进公司的企业文化建设，同时计划20XX年年会邀请供应商参加，分享公司一年来的业绩成果，以快乐开心的气氛，加强与供应商的合作和沟通。\r\n   0XX年年会主题：激情、创新、融合、跨越     为更好的组织20XX年公司年会，通知如下：     1、公司组织文艺节目演出，要求以部门为单位上报演出节目。每个部门都必须有节目。人员比较少的部门可以组合。', '2019-05-16 14:59:56', 1);
 
 -- ----------------------------
 -- Table structure for hytz
@@ -62,7 +62,7 @@ CREATE TABLE `hytz`  (
 -- ----------------------------
 -- Table structure for qjsq
 -- ----------------------------
-DROP TABLE IF EXISTS `qjsq`;
+DROP TABLE IF EXISTS `vacate_apply`;
 CREATE TABLE `vacate_apply`  (
   `qjId` int(6) NOT NULL AUTO_INCREMENT,
   `qjyy` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '请假原因',
@@ -84,7 +84,7 @@ INSERT INTO `vacate_apply` VALUES (10, '病假', '', '2019-05-12 00:00:00', '201
 -- Table structure for rw
 -- ----------------------------
 DROP TABLE IF EXISTS `mission`;
-CREATE TABLE `rw`  (
+CREATE TABLE `mission`  (
   `rwId` int(5) NOT NULL,
   `rwmc` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '任务名称',
   `rwms` varchar(1000) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '任务描述',

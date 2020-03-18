@@ -39,8 +39,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<Hys> hysList() {
-        return userMapper.hysList();
+    public List<Hys> hysList(Hys hys) {
+        return userMapper.hysList(hys);
     }
 
     @Override

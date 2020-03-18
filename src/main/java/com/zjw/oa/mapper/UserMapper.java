@@ -27,7 +27,7 @@ public interface UserMapper {
 
     User getUser(User user);
 
-    List<Hys> hysList();
+    List<Hys> hysList(Hys hys);
 
     void updateHys(Hys hys)throws Exception;
 
