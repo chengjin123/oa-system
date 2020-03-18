@@ -38,7 +38,6 @@ public class UserController {
      */
     @RequestMapping(value = "/login")
     @ResponseBody
-    @CrossOrigin
     public JSONObject login(@RequestBody User user) {
         User user1 = userService.login(user);
         if (user1 != null&&user1.getPermission()==1) {
@@ -61,7 +60,6 @@ public class UserController {
      */
     @RequestMapping(value = "/userList")
     @ResponseBody
-    @CrossOrigin
     public JSONArray getUserList(@RequestBody(required=false) User user) {
         List<User> list = userService.getUserList(user);
         String jsonStr = JsonUtil.serializeDate(list);
@@ -70,7 +68,6 @@ public class UserController {
 
     @RequestMapping(value = "/addDk")
     @ResponseBody
-    @CrossOrigin
     public JSONObject addDk(@RequestBody Dk dk) {
         try{
             userService.addDk(dk);
@@ -82,7 +79,6 @@ public class UserController {
 
     @RequestMapping(value = "/getDkList")
     @ResponseBody
-    @CrossOrigin
     public JSONArray getDkList(@RequestBody UserDto userDto) {
         List<UserDto> list = userService.getDkList(userDto);
         String jsonStr = JsonUtil.serializeDate(list);
@@ -91,7 +87,6 @@ public class UserController {
 
     @RequestMapping(value = "/getHysList")
     @ResponseBody
-    @CrossOrigin
     public JSONArray getHysList() {
         List<Hys> list = userService.hysList();
         String jsonStr = JsonUtil.serializeDate(list);
@@ -100,7 +95,6 @@ public class UserController {
 
     @RequestMapping(value = "/updateHys")
     @ResponseBody
-    @CrossOrigin
     public JSONObject updateHys(Hys hys) {
         try{
             userService.updateHys(hys);
@@ -113,7 +107,6 @@ public class UserController {
 
     @RequestMapping(value = "/ky")
     @ResponseBody
-    @CrossOrigin
     public String kh(String time,String hysbh,List<String> userIdList) throws Exception {
         //List<User> userList = new ArrayList<>();
         for(int i=0;i<userIdList.size();i++){

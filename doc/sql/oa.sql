@@ -30,7 +30,7 @@ CREATE TABLE `dk`  (
 -- Table structure for gsgg
 -- ----------------------------
 DROP TABLE IF EXISTS `gsgg`;
-CREATE TABLE `gsgg`  (
+CREATE TABLE `notice`  (
   `ggId` int(5) NOT NULL,
   `ggTitle` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '公告标题',
   `ggNr` varchar(1000) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '公告内容',
@@ -63,7 +63,7 @@ CREATE TABLE `hytz`  (
 -- Table structure for qjsq
 -- ----------------------------
 DROP TABLE IF EXISTS `qjsq`;
-CREATE TABLE `qjsq`  (
+CREATE TABLE `vacate_apply`  (
   `qjId` int(6) NOT NULL AUTO_INCREMENT,
   `qjyy` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '请假原因',
   `qjms` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '请假描述',
@@ -77,13 +77,13 @@ CREATE TABLE `qjsq`  (
 -- ----------------------------
 -- Records of qjsq
 -- ----------------------------
-INSERT INTO `qjsq` VALUES (9, '事假', '回家', '2019-05-11 00:00:00', '2019-05-11 00:00:00', '审批中', 1);
-INSERT INTO `qjsq` VALUES (10, '病假', '', '2019-05-12 00:00:00', '2019-05-13 00:00:00', '审批中', 1);
+INSERT INTO `vacate_apply` VALUES (9, '事假', '回家', '2019-05-11 00:00:00', '2019-05-11 00:00:00', '审批中', 1);
+INSERT INTO `vacate_apply` VALUES (10, '病假', '', '2019-05-12 00:00:00', '2019-05-13 00:00:00', '审批中', 1);
 
 -- ----------------------------
 -- Table structure for rw
 -- ----------------------------
-DROP TABLE IF EXISTS `rw`;
+DROP TABLE IF EXISTS `mission`;
 CREATE TABLE `rw`  (
   `rwId` int(5) NOT NULL,
   `rwmc` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '任务名称',
@@ -101,13 +101,13 @@ CREATE TABLE `rw`  (
 -- ----------------------------
 -- Records of rw
 -- ----------------------------
-INSERT INTO `rw` VALUES (1, '任务1', '任务任务任务任务任务任务任务任务任务任务任务', '2019-05-17 16:37:50', 3, 1, 'zjw', 'ycy', 1, NULL);
+INSERT INTO `mission` VALUES (1, '任务1', '任务任务任务任务任务任务任务任务任务任务任务', '2019-05-17 16:37:50', 3, 1, 'zjw', 'ycy', 1, NULL);
 
 -- ----------------------------
 -- Table structure for rz
 -- ----------------------------
-DROP TABLE IF EXISTS `rz`;
-CREATE TABLE `rz`  (
+DROP TABLE IF EXISTS `log_info`;
+CREATE TABLE `log_info`  (
   `rzId` int(11) NOT NULL AUTO_INCREMENT,
   `rdnr` varchar(1000) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '日志内容',
   `rzTime` datetime(0) NULL DEFAULT NULL COMMENT '记录时间',

@@ -39,21 +39,5 @@ public class JsonUtil {
                 StandardOpenOption.TRUNCATE_EXISTING);
     }
 
-    /*public static void main(String[] args) {
-        Person person1 = new Person();
-        person1.setAddress("address");
-        person1.setAge(11);
-        person1.setName("amao");
 
-        Person person2 = new Person();
-        person2.setAddress("address");
-        person2.setAge(11);
-        person2.setName("amao");
-
-        List<Person> lp = new ArrayList<Person>();
-        lp.add(person1);
-        lp.add(person2);
-        System.out.println(serialize(lp));
-    }
-*/
 }

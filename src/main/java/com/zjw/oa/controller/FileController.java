@@ -31,7 +31,6 @@ public class FileController {
 
     @RequestMapping(value = "/upload")
     @ResponseBody
-    @CrossOrigin
     public String upload(@RequestParam("file") MultipartFile file) {
         try {
             if (file.isEmpty()) {
@@ -63,7 +62,6 @@ public class FileController {
 
     @PostMapping("/batch")
     @ResponseBody
-    @CrossOrigin
     public String handleFileUpload(HttpServletRequest request) {
         List<MultipartFile> files = ((MultipartHttpServletRequest) request).getFiles("file");
         MultipartFile file = null;
@@ -93,7 +91,6 @@ public class FileController {
 
     @GetMapping("/download")
     @ResponseBody
-    @CrossOrigin
     public String downloadFile(String fileName, HttpServletResponse response,HttpServletRequest request) throws Exception {
         //fileName="任务(1).txt";
         String userAgent = request.getHeader("User-Agent");
@@ -154,7 +151,6 @@ public class FileController {
 
     @RequestMapping(value = "/fileList")
     @ResponseBody
-    @CrossOrigin
     public JSONArray fileList(String fileName) {
         File file = new File(FILE_PATH);
         File[] fileList = file.listFiles();

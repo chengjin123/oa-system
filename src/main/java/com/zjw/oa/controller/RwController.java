@@ -35,7 +35,6 @@ public class RwController {
      */
     @RequestMapping(value = "/myRw")
     @ResponseBody
-    @CrossOrigin
     public JSONArray myRw(Rw rw) {
         List<Rw> list = rwService.myRw(rw);
         String jsonStr = JsonUtil.serializeDate(list);
@@ -50,7 +49,6 @@ public class RwController {
      */
     @RequestMapping(value = "/rwXq")
     @ResponseBody
-    @CrossOrigin
     public JSONObject rwXq(Rw rw) {
         Rw rw1 = rwService.rwXq(rw);
         String jsonStr = JsonUtil.serialize(rw1);
@@ -65,7 +63,6 @@ public class RwController {
      */
     @RequestMapping(value = "/delRw")
     @ResponseBody
-    @CrossOrigin
     public JSONObject delRw(Rw rw) {
         try {
             rwService.delRw(rw);
@@ -84,7 +81,6 @@ public class RwController {
      */
     @RequestMapping(value = "/updateRw")
     @ResponseBody
-    @CrossOrigin
     public JSONObject updateRw(Rw rw) {
         try {
             rwService.updateRw(rw);
@@ -102,7 +98,6 @@ public class RwController {
      */
     @RequestMapping(value = "/addRw")
     @ResponseBody
-    @CrossOrigin
     public JSONObject addRw(Rw rw) {
         try {
             rw.setIsComplete(0);
@@ -121,7 +116,6 @@ public class RwController {
      */
     @RequestMapping(value = "/rzList")
     @ResponseBody
-    @CrossOrigin
     public JSONArray rzList(String rzTime) {
 
         List<Rz> list = rwService.rzList(rzTime);
@@ -137,7 +131,6 @@ public class RwController {
      */
     @RequestMapping(value = "/addRz")
     @ResponseBody
-    @CrossOrigin
     public JSONObject addRz(Rz rz) {
         try {
             rwService.addRz(rz);
@@ -150,7 +143,6 @@ public class RwController {
 
     @RequestMapping(value = "/batchremove")
     @ResponseBody
-    @CrossOrigin
     public JSONObject batchremove(Rw rw) {
         try {
             rw.setIsComplete(1);

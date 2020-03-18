@@ -30,7 +30,6 @@ public class GgController {
      */
     @RequestMapping(value = "/gsgg")
     @ResponseBody
-    @CrossOrigin
     public JSONArray getGgList() {
         List<Gsgg> list = ggService.getGgList();
         String jsonStr = JsonUtil.serializeDate(list);
@@ -44,7 +43,6 @@ public class GgController {
      */
     @RequestMapping(value = "/xmjd")
     @ResponseBody
-    @CrossOrigin
     public JSONArray getXmList() {
         List<Xmjd> list = ggService.getxmList();
         String jsonStr = JsonUtil.serializeDate(list);
@@ -52,7 +50,6 @@ public class GgController {
     }
 
     @GetMapping(value = "/addGg")
-    @CrossOrigin
     public JSONObject add(Gsgg gsgg) {
         JSONObject jsonObject = JSON.parseObject("{success:true,msg:\"提交成功！\"}");
         try {
@@ -68,7 +65,6 @@ public class GgController {
 
 
     @GetMapping(value = "/delGg")
-    @CrossOrigin
     public JSONObject delete(Gsgg gsgg) {
         JSONObject jsonObject = JSON.parseObject("{success:true,msg:\"提交成功！\"}");
         try {

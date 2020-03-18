@@ -28,7 +28,6 @@ public class QjsqController {
      * @return
      */
     @RequestMapping(value = "/addQjsq")
-    @CrossOrigin
     public JSONObject addQj(Qjsq qjsq) {
         JSONObject jsonObject = JSON.parseObject("{success:true,msg:\"提交成功！\"}");
         qjsq.setQjyy("0".equals(qjsq.getQjyy()) ? "事假" : "病假");
@@ -47,7 +46,6 @@ public class QjsqController {
      * @return
      */
     @RequestMapping(value = "/getQjList")
-    @CrossOrigin
     public JSONArray getQjList(Qjsq qjsq) {
 
         List<Qjsq> list = qjsqService.getQjList(qjsq);
@@ -61,7 +59,6 @@ public class QjsqController {
      * @return
      */
     @RequestMapping(value = "/getQjXx")
-    @CrossOrigin
     public JSONObject getQjXx(Qjsq qjsq) {
         Qjsq qjsq1 = qjsqService.getQj(qjsq);
         String jsonStr = JsonUtil.serialize(qjsq1);
@@ -74,7 +71,6 @@ public class QjsqController {
      * @return
      */
     @RequestMapping(value = "/agreeQj")
-    @CrossOrigin
     public JSONObject agreeQj(Qjsq qjsq) {
         try{
             qjsqService.agreeQj(qjsq);

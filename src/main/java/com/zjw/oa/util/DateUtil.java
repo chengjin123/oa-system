@@ -566,9 +566,5 @@ public class DateUtil {
         return dateList;
     }
 
-    /*public static void main(String[] args) {
-        List<String> kk = DateUtil.getSomeMonthsAgoDaysNotIncludeNow(1, null);
-        kk.forEach(e -> System.out.println(e));
-    }*/
 
 }
