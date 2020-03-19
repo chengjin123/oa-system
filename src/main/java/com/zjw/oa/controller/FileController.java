@@ -18,16 +18,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *  文件上传
- *  @author YE
- *  @date 2020-01-16 15:21:24
+ * 文件上传
  *
+ * @author YE
+ * @date 2020-01-16 15:21:24
  */
 @RestController
 @RequestMapping(value = "/file")
 public class FileController {
     private static final Logger log = LoggerFactory.getLogger(FileController.class);
-    private static String FILE_PATH = "D:/test/";
+    //    private static String FILE_PATH = "D:/test/";
+    private static String FILE_PATH = "/Users/li/test/";
+
 
     @RequestMapping(value = "/upload")
     @ResponseBody
@@ -91,10 +93,10 @@ public class FileController {
 
     @GetMapping("/download")
     @ResponseBody
-    public String downloadFile(String fileName, HttpServletResponse response,HttpServletRequest request) throws Exception {
+    public String downloadFile(String fileName, HttpServletResponse response, HttpServletRequest request) throws Exception {
         //fileName="任务(1).txt";
         String userAgent = request.getHeader("User-Agent");
-        String pathName=FILE_PATH+fileName;
+        String pathName = FILE_PATH + fileName;
         if (fileName != null) {
             //设置文件路径
             File file = new File(pathName);
@@ -103,6 +105,9 @@ public class FileController {
                 //response.setContentType("application/octet-stream;charset=UTF-8");
                 //response.setContentType("application/force-download");// 设置强制下载不打开
                 //response.reset();
+                response.setContentType("application/vnd.ms-excel;charset=UTF-8");
+                response.setCharacterEncoding("UTF-8");
+
                 // 针对IE或者以IE为内核的浏览器：
                 if (userAgent.contains("MSIE") || userAgent.contains("Trident")) {
                     fileName = java.net.URLEncoder.encode(fileName, "UTF-8");
@@ -113,37 +118,32 @@ public class FileController {
                 response.setHeader("Content-Disposition", "attachment;fileName=" + fileName);
                 //response.setContentType("application/octet-stream;charset=gbk");
                 //response.addHeader("Content-Disposition", "attachment;fileName=" + fileName);// 设置文件名
-                InputStream inStream = null;
-                OutputStream os = null;
+                byte[] buffer = new byte[1024];
+                FileInputStream fis = null; //文件输入流
+                BufferedInputStream bis = null;
+                OutputStream os = null; //输出流
                 try {
-                    inStream = new FileInputStream(pathName);
                     os = response.getOutputStream();
-                    byte[] buff = new byte[1024];
-                    int len;
-                    while ((len = inStream.read(buff)) > 0) {
-                        os.write(buff, 0, len);
+                    fis = new FileInputStream(file);
+                    bis = new BufferedInputStream(fis);
+                    int i = bis.read(buffer);
+                    while (i != -1) {
+                        os.write(buffer);
+                        i = bis.read(buffer);
                     }
-
                     return "下载成功";
                 } catch (Exception e) {
                     e.printStackTrace();
                 } finally {
-                    if (os != null) {
-                        try {
-                            os.flush();
-                            os.close();
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                    if (inStream != null) {
-                        try {
-                            inStream.close();
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
+                    try {
+                        fis.close();
+                        bis.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
                     }
                 }
+
+
             }
         }
         return "下载失败";
@@ -160,10 +160,10 @@ public class FileController {
             MyFile myFile = new MyFile();
             myFile.setFileName(fileList[i].getName());
             myFile.setFileLength(convertFileSize((fileList[i].length())));
-            if(!StringUtils.isNullOrEmpty(fileName)&&fileList[i].getName().equals(fileName)){
+            if (!StringUtils.isNullOrEmpty(fileName) && fileList[i].getName().equals(fileName)) {
                 list.add(myFile);
                 break;
-            }else{
+            } else {
                 list.add(myFile);
             }
         }
@@ -183,7 +183,7 @@ public class FileController {
         }*/
     }
 
-    public  static String convertFileSize(long size) {
+    public static String convertFileSize(long size) {
         long kb = 1024;
         long mb = kb * 1024;
         long gb = mb * 1024;
@@ -199,7 +199,6 @@ public class FileController {
         } else
             return String.format("%d B", size);
     }
-
 
 
 }
